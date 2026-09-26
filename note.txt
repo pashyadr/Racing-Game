@@ -1,0 +1,35 @@
+# ==========================================
+# FUNGSI MENGGAMBAR LINGKUNGAN JALANAN (RAMAI)
+# ==========================================
+def draw_environment(track_y):
+    # 1. Background Rumput & Aspal
+    gameDisplay.fill(GREEN)
+    pygame.draw.rect(gameDisplay, DARK_GRAY, (ROAD_LEFT, 0, ROAD_WIDTH, display_height))
+
+    # 2. Kerb/Trotoar Merah-Putih
+    kerb_h = 40
+    for i in range(-2, int(display_height / kerb_h) + 2):
+        y_pos = (i * kerb_h) + (track_y % (kerb_h * 2))
+        color = RED if (i % 2 == 0) else WHITE
+        pygame.draw.rect(gameDisplay, color, (ROAD_LEFT - 15, y_pos, 15, kerb_h))
+        pygame.draw.rect(gameDisplay, color, (ROAD_RIGHT, y_pos, 15, kerb_h))
+
+    # 3. Marka Jalan 3 Lajur (Garis Putus-putus)
+    dash_h, dash_gap = 50, 30
+    total_dash = dash_h + dash_gap
+    lane_1_x = ROAD_LEFT + (ROAD_WIDTH / 3)
+    lane_2_x = ROAD_LEFT + (ROAD_WIDTH / 3) * 2
+
+    for i in range(-2, int(display_height / total_dash) + 2):
+        y_pos = (i * total_dash) + (track_y % total_dash)
+        pygame.draw.rect(gameDisplay, WHITE, (lane_1_x - 4, y_pos, 8, dash_h))
+        pygame.draw.rect(gameDisplay, WHITE, (lane_2_x - 4, y_pos, 8, dash_h))
+
+    # 4. Pohon di Pinggir Jalan
+    tree_gap = 140
+    for i in range(-2, int(display_height / tree_gap) + 2):
+        y_pos = (i * tree_gap) + (track_y % tree_gap)
+        pygame.draw.rect(gameDisplay, BROWN, (35, y_pos + 15, 12, 20))
+        pygame.draw.circle(gameDisplay, DARK_GREEN, (41, int(y_pos + 10)), 22)
+        pygame.draw.rect(gameDisplay, BROWN, (750, y_pos + 15, 12, 20))
+        pygame.draw.circle(gameDisplay, DARK_GREEN, (756, int(y_pos + 10)), 22)
