@@ -48,11 +48,11 @@ clock = pygame.time.Clock()
 # ==========================================
 try:
     # 1. Load Mobil Player dan mengubah ukurannya sesuai car_width/car_height
-    carImg = pygame.image.load('Racer.png')
+    carImg = pygame.image.load('Sport Car.png')
     carImg = pygame.transform.scale(carImg, (car_width, car_height))
 
     # 2. Load Mobil Musuh (ukurannya akan di-scale dinamis di fungsi things())
-    enemyImg = pygame.image.load('Enemy.png')
+    enemyImg = pygame.image.load('Enemy Trucker.png')
 except:
     # Fallback: Jika gambar tidak ditemukan, buat kotak biru (player) dan merah (musuh)
     print("WARNING: Gambar 'mobil_keren.png' atau 'musuh.png' gak ketemu!")
@@ -272,8 +272,8 @@ def game_loop():
         # ==========================================
         # DEBUG MODE: GAMBAR HITBOX (Sekarang Dihapus/Transparan)
         # ==========================================
-        pygame.draw.rect(gameDisplay, (0, 255, 0), player_rect, 2)
-        pygame.draw.rect(gameDisplay, (255, 0, 0), enemy_rect, 2)
+        #pygame.draw.rect(gameDisplay, (0, 255, 0), player_rect, 2)
+        #pygame.draw.rect(gameDisplay, (255, 0, 0), enemy_rect, 2)
         # ==========================================
 
         # Memperbarui seluruh layar untuk menampilkan semua perubahan
